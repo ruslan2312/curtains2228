@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import logoSvg from '../assets/img/pizza-logo.svg';
+import logoSvg from '../assets/img/curtain-logo.webp';
 import Button from './Button';
 
 function Header() {
@@ -13,10 +13,10 @@ function Header() {
       <div className="container">
         <Link to="/">
           <div className="header__logo">
-            <img width="38" src={logoSvg} alt="Pizza logo" />
+            <img width="80" src={logoSvg} alt="Curtain logo" />
             <div>
-              <h1>React Pizza</h1>
-              <p>самая вкусная пицца во вселенной</p>
+              <h1>WORLD-CURTAINS</h1>
+              <p>лучшие шторы прямиком из европы</p>
             </div>
           </div>
         </Link>

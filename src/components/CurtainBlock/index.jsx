@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '../Button';
 
-function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, addedCount }) {
-  const availableTypes = ['тонкое', 'традиционное'];
-  const availableSizes = [26, 30, 40];
+function CurtainBlock({ id, name, imageUrl, price, types, sizes, onClickAddCurtain, addedCount }) {
+  const availableTypes = ['Натуральная', 'Синтетика', 'Смешанная'];
+  const availableSizes = [1, 1.2, 2];
 
   const [activeType, setActiveType] = React.useState(types[0]);
   const [activeSize, setActiveSize] = React.useState(0);
@@ -18,7 +18,7 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
     setActiveSize(index);
   };
 
-  const onAddPizza = () => {
+  const onAddCurtain = () => {
     const obj = {
       id,
       name,
@@ -27,14 +27,15 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
       size: availableSizes[activeSize],
       type: availableTypes[activeType],
     };
-    onClickAddPizza(obj);
+    onClickAddCurtain(obj);
   };
 
   return (
-    <div className="pizza-block">
-      <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
-      <h4 className="pizza-block__title">{name}</h4>
-      <div className="pizza-block__selector">
+    <div className="curtain-block">
+      <img className="curtain-block__image" src={imageUrl} alt="Curtain" />
+      <h4 className="curtain-block__title">{name}</h4>
+      <div className="curtain-block__selector">
+        <h4 style={{marginRight: 200, marginBottom:5}}>Тип ткани: </h4>
         <ul>
           {availableTypes.map((type, index) => (
             <li
@@ -48,6 +49,7 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
             </li>
           ))}
         </ul>
+        <h4 style={{marginRight: 145, marginBottom:5}} >Ширина в метрах: </h4>
         <ul>
           {availableSizes.map((size, index) => (
             <li
@@ -57,14 +59,14 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
                 active: activeSize === index,
                 disabled: !sizes.includes(size),
               })}>
-              {size} см.
+              {size} м.
             </li>
           ))}
         </ul>
       </div>
-      <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price} ₽</div>
-        <Button onClick={onAddPizza} className="button--add" outline>
+      <div className="curtain-block__bottom">
+        <div className="curtain-block__price">{price} ₽</div>
+        <Button onClick={onAddCurtain} className="button--add" outline>
           <svg
             width="12"
             height="12"
@@ -84,21 +86,21 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
   );
 }
 
-PizzaBlock.propTypes = {
+CurtainBlock.propTypes = {
   name: PropTypes.string,
   imageUrl: PropTypes.string,
   price: PropTypes.number,
   types: PropTypes.arrayOf(PropTypes.number),
   sizes: PropTypes.arrayOf(PropTypes.number),
-  onClickAddPizza: PropTypes.func,
+  onClickAddCurtain: PropTypes.func,
   addedCount: PropTypes.number,
 };
 
-PizzaBlock.defaultProps = {
+CurtainBlock.defaultProps = {
   name: '---',
   price: 0,
   types: [],
   sizes: [],
 };
 
-export default PizzaBlock;
+export default CurtainBlock;

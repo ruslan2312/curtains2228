@@ -5,7 +5,7 @@ export const setLoaded = (payload) => ({
   payload,
 });
 
-export const fetchPizzas = (sortBy, category) => (dispatch) => {
+export const fetchCurtains = (sortBy, category) => (dispatch) => {
   dispatch({
     type: 'SET_LOADED',
     payload: false,
@@ -13,16 +13,16 @@ export const fetchPizzas = (sortBy, category) => (dispatch) => {
 
   axios
     .get(
-      `/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${
+      `/curtains?${category !== null ? `category=${category}` : ''}&_sort=${sortBy.type}&_order=${
         sortBy.order
       }`,
     )
     .then(({ data }) => {
-      dispatch(setPizzas(data));
+      dispatch(setCurtains(data));
     });
 };
 
-export const setPizzas = (items) => ({
-  type: 'SET_PIZZAS',
+export const setCurtains = (items) => ({
+  type: 'SET_CURTAINS',
   payload: items,
 });

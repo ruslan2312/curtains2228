@@ -10,7 +10,7 @@ function Cart() {
   const dispatch = useDispatch();
   const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart);
 
-  const addedPizzas = Object.keys(items).map((key) => {
+  const addedCurtains = Object.keys(items).map((key) => {
     return items[key].items[0];
   });
 
@@ -115,13 +115,14 @@ function Cart() {
             </div>
           </div>
           <div className="content__items">
-            {addedPizzas.map((obj) => (
+            {addedCurtains.map((obj) => (
               <CartItem
                 key={obj.id}
                 id={obj.id}
                 name={obj.name}
                 type={obj.type}
                 size={obj.size}
+                imageUrl={obj.imageUrl}
                 totalPrice={items[obj.id].totalPrice}
                 totalCount={items[obj.id].items.length}
                 onRemove={onRemoveItem}
@@ -133,7 +134,7 @@ function Cart() {
           <div className="cart__bottom">
             <div className="cart__bottom-details">
               <span>
-                Всего пицц: <b>{totalCount} шт.</b>
+                Всего штор: <b>{totalCount} шт.</b>
               </span>
               <span>
                 Сумма заказа: <b>{totalPrice} ₽</b>
@@ -171,9 +172,9 @@ function Cart() {
             Корзина пустая <i>😕</i>
           </h2>
           <p>
-            Вероятней всего, вы не заказывали ещё пиццу.
+            Добавте понравившийся вам товар в корзину.
             <br />
-            Для того, чтобы заказать пиццу, перейди на главную страницу.
+            Для того, чтобы добавить товар, перейди на главную страницу.
           </p>
           <img src={cartEmptyImage} alt="Empty cart" />
           <Link to="/" className="button button--black">
